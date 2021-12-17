@@ -15,7 +15,7 @@ function App() {
 		fetch(API + "/todos")
 			.then((res) => res.json())
 			.then((data) => setTodos(data))
-			.catch((err) => console.error("Error: ", err));
+			.catch((err) => console.error(err));
 	};
 
 	const completeTodo = async (id) => {
@@ -32,7 +32,7 @@ function App() {
 
 	const deleteTodo = async (id) => {
 		const data = await fetch(API + "/todo/delete/" + id, { method: "DELETE" }).then((res) => res.json());
-		setTodos((todos) => todos.filter((todo) => todo._id !== data._id));
+		setTodos((todos) => todos.filter((todo) => todo._id !== data.result._id));
 	};
 
 	const addTodo = async () => {
@@ -55,15 +55,19 @@ function App() {
 			<h1>Welcome</h1>
 			<h4>Your Current Tasks</h4>
 			<div className="todos">
-				{todos.map((todo) => (
-					<div className={"todo " + (todo.complete ? "is-complete" : "")} key={todo._id} onClick={() => completeTodo(todo._id)}>
-						<div className="checkbox"></div>
-						<div className="text">{todo.text}</div>
-						<div className="delete" onClick={() => deleteTodo(todo._id)}>
-							x
+				{todos.length > 0 ? (
+					todos.map((todo) => (
+						<div className={"todo" + (todo.complete ? " is-complete" : "")} key={todo._id} onClick={() => completeTodo(todo._id)}>
+							<div className="checkbox"></div>
+							<div className="text">{todo.text}</div>
+							<div className="delete" onClick={() => deleteTodo(todo._id)}>
+								x
+							</div>
 						</div>
-					</div>
-				))}
+					))
+				) : (
+					<p>No more tasks to show</p>
+				)}
 			</div>
 			<div className="addPopup" onClick={() => setPopupActive(true)}>
 				+
@@ -71,7 +75,7 @@ function App() {
 			{popupActive ? (
 				<div className="popup">
 					<div className="closePopup" onClick={() => setPopupActive(false)}>
-						x
+						X
 					</div>
 					<div className="content">
 						<h3>Add Task</h3>
