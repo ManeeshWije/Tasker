@@ -13,11 +13,13 @@ body {
 .App {
 	padding: 32px;
 }
+
 h1 {
 	font-size: 40px;
 	font-weight: 700;
 	margin-bottom: 32px;
 }
+
 h4 {
 	font-size: 18px;
 	color: rgb(177, 174, 174);
@@ -25,9 +27,10 @@ h4 {
 	font-weight: 400;
 	margin-bottom: 16px;
 }
+
 .todo {
 	position: relative;
-	background-color: #c4c4c4;
+	background-color: #5e5c5c;
 	padding: 16px;
 	border-radius: 16px;
 	display: flex;
@@ -38,7 +41,7 @@ h4 {
 }
 
 .todo:hover {
-	opacity: 0.8;
+	opacity: 0.7;
 }
 
 .todo .checkbox {
@@ -50,11 +53,30 @@ h4 {
 	transition: 0.4s;
 }
 
-.todo-complete .checkbox {
+.todo.is-complete .checkbox {
 	background-color: white;
-	background-image: linear-gradient(to bottom, white, black);
+	background-image: linear-gradient(to bottom, rgb(99, 157, 243), rgb(223, 198, 198));
 }
 
 .todo .text {
 	font-size: 20px;
+}
+
+.todo.is-complete .text {
+	text-decoration: line-through;
+}
+
+.todo .delete {
+	position: absolute;
+	top: 50%;
+	right: 16px;
+	transform: translateY(-50%);
+	width: 24px;
+	height: 24px;
+	color: white;
+	background-color: red;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }

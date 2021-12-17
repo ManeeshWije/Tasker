@@ -9,7 +9,7 @@ function App() {
 					<div className="text">Get the Bread</div>
 					<div className="delete">x</div>
 				</div>
-				<div className="todo-complete">
+				<div className="todo is-complete">
 					<div className="checkbox"></div>
 					<div className="text">Get the Milk</div>
 					<div className="delete">x</div>
