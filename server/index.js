@@ -40,7 +40,7 @@ app.delete("/todo/delete/:id", async (req, res) => {
 });
 
 //set completed or not to an existing todo by id
-app.put("/todo/complete/:id", async (req, res) => {
+app.get("/todo/complete/:id", async (req, res) => {
 	const todo = await Todo.findById(req.params.id);
 	todo.complete = !todo.complete;
 	todo.save();
