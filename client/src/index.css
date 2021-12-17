@@ -1,0 +1,60 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "Fira Sans", sans-serif;
+}
+
+body {
+	background-color: #2e2e2e;
+	color: white;
+}
+
+.App {
+	padding: 32px;
+}
+h1 {
+	font-size: 40px;
+	font-weight: 700;
+	margin-bottom: 32px;
+}
+h4 {
+	font-size: 18px;
+	color: rgb(177, 174, 174);
+	text-transform: uppercase;
+	font-weight: 400;
+	margin-bottom: 16px;
+}
+.todo {
+	position: relative;
+	background-color: #c4c4c4;
+	padding: 16px;
+	border-radius: 16px;
+	display: flex;
+	align-items: center;
+	transition: 0.5s;
+	cursor: pointer;
+	margin-bottom: 16px;
+}
+
+.todo:hover {
+	opacity: 0.8;
+}
+
+.todo .checkbox {
+	width: 20px;
+	height: 20px;
+	margin-right: 16px;
+	border-radius: 999px;
+	background-color: #2e2e2e;
+	transition: 0.4s;
+}
+
+.todo-complete .checkbox {
+	background-color: white;
+	background-image: linear-gradient(to bottom, white, black);
+}
+
+.todo .text {
+	font-size: 20px;
+}
