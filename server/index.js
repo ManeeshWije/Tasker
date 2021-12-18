@@ -7,9 +7,9 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-//connecting to mongodb
+//establishing mongodb connection
 mongoose
-	.connect("mongodb://127.0.0.1:27017", {
+	.connect("mongodb://127.0.0.1:27017/crud-todo-list", {
 		useNewUrlParser: true,
 		useUnifiedTopology: true,
 	})
@@ -22,6 +22,7 @@ const Todo = require("./models/Todo");
 app.get("/todos", async (req, res) => {
 	const todos = await Todo.find();
 	res.json(todos);
+	console.log(todos);
 });
 
 //add a todo
@@ -31,19 +32,22 @@ app.post("/todo/new", (req, res) => {
 	});
 	todo.save();
 	res.json(todo);
+	console.log(todo);
 });
 
 //delete an existing todo by id
 app.delete("/todo/delete/:id", async (req, res) => {
-	const result = await Todo.findByIdAndDelete(req.params.id);
+	const result = await Todo.findByIdAndDelete(req.params.id); //this breaks because of below i think
 	res.json(result);
+	console.log(result);
 });
 
 //set completed to an existing todo by id
-app.get("/todo/complete/:id", async (req, res) => {
+app.put("/todo/complete/:id", async (req, res) => {
 	const todo = await Todo.findById(req.params.id);
-	todo.complete = !todo.complete;
-	todo.update();
+	todo.complete = !todo.complete; //this breaks because of above i think
+	todo.save(); //this is part of the problem
+	// todo.update();
 	res.json(todo);
 });
 

@@ -6,7 +6,6 @@ const TodoSchema = new Schema({
 	//need text
 	text: {
 		type: String,
-		required: true,
 	},
 	//true or false for completed
 	complete: {

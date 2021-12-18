@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 
+//base endpoint
 const API = "http://localhost:3001";
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
 		getTodos();
 	}, []);
 
+	//getting all current todos
 	const getTodos = () => {
 		fetch(API + "/todos")
 			.then((res) => res.json())
@@ -18,8 +20,11 @@ function App() {
 			.catch((err) => console.error(err));
 	};
 
+	//chanding todo to completed
 	const completeTodo = async (id) => {
-		const data = await fetch(API + "/todo/complete/" + id).then((res) => res.json());
+		const data = await fetch(API + "/todo/complete/" + id, {
+			method: "PUT",
+		}).then((res) => res.json());
 		setTodos((todos) =>
 			todos.map((todo) => {
 				if (todo._id === data._id) {
@@ -30,6 +35,7 @@ function App() {
 		);
 	};
 
+	//add a todo item
 	const addTodo = async () => {
 		const data = await fetch(API + "/todo/new", {
 			method: "POST",
@@ -40,22 +46,29 @@ function App() {
 				text: newTodo,
 			}),
 		}).then((res) => res.json());
+		//set the todo to the array using ...
 		setTodos([...todos, data]);
+		//make add window disappear
 		setPopupActive(false);
+		//set next todo to nothing
 		setNewTodo("");
 	};
 
+	//delete an existing todo
 	const deleteTodo = async (id) => {
 		const data = await fetch(API + "/todo/delete/" + id, { method: "DELETE" }).then((res) => res.json());
+		//filter out only ids that arent the same as what was passed in to simulate a delete
 		setTodos((todos) => todos.filter((todo) => todo._id !== data._id));
-		console.log(data);
+		// console.log(data);
 	};
 
+	//jsx stuff
 	return (
 		<div className="App">
 			<h1>Welcome</h1>
 			<h4>Your Current Tasks</h4>
 			<div className="todos">
+				{/* only do this when there is at least 1 todo */}
 				{todos.length > 0 ? (
 					todos.map((todo) => (
 						<div className={"todo" + (todo.complete ? " is-complete" : "")} key={todo._id} onClick={() => completeTodo(todo._id)}>
