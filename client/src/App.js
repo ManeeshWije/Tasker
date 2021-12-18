@@ -30,11 +30,6 @@ function App() {
 		);
 	};
 
-	const deleteTodo = async (id) => {
-		const data = await fetch(API + "/todo/delete/" + id, { method: "DELETE" }).then((res) => res.json());
-		setTodos((todos) => todos.filter((todo) => todo._id !== data.result._id));
-	};
-
 	const addTodo = async () => {
 		const data = await fetch(API + "/todo/new", {
 			method: "POST",
@@ -50,6 +45,12 @@ function App() {
 		setNewTodo("");
 	};
 
+	const deleteTodo = async (id) => {
+		const data = await fetch(API + "/todo/delete/" + id, { method: "DELETE" }).then((res) => res.json());
+		setTodos((todos) => todos.filter((todo) => todo._id !== data._id));
+		console.log(data);
+	};
+
 	return (
 		<div className="App">
 			<h1>Welcome</h1>
@@ -61,7 +62,7 @@ function App() {
 							<div className="checkbox"></div>
 							<div className="text">{todo.text}</div>
 							<div className="delete" onClick={() => deleteTodo(todo._id)}>
-								x
+								X
 							</div>
 						</div>
 					))

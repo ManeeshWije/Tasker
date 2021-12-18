@@ -9,7 +9,7 @@ app.use(cors());
 
 //connecting to mongodb
 mongoose
-	.connect("mongodb://127.0.0.1:27017/crud-todo-list", {
+	.connect("mongodb://127.0.0.1:27017", {
 		useNewUrlParser: true,
 		useUnifiedTopology: true,
 	})
@@ -39,11 +39,11 @@ app.delete("/todo/delete/:id", async (req, res) => {
 	res.json(result);
 });
 
-//set completed or not to an existing todo by id
+//set completed to an existing todo by id
 app.get("/todo/complete/:id", async (req, res) => {
 	const todo = await Todo.findById(req.params.id);
 	todo.complete = !todo.complete;
-	todo.save();
+	todo.update();
 	res.json(todo);
 });
 
