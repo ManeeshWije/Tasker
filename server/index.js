@@ -9,46 +9,49 @@ app.use(cors());
 
 //establishing mongodb connection
 mongoose
-	.connect("mongodb://127.0.0.1:27017/crud-todo-list", {
-		useNewUrlParser: true,
-		useUnifiedTopology: true,
-	})
-	.then(() => console.log("Connected to DB"))
-	.catch(console.error);
+  .connect("mongodb://127.0.0.1:27017/crud-todo-list", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log("Connected to DB"))
+  .catch(console.error);
 
 const Todo = require("./models/Todo");
 
 //display current todos
 app.get("/todos", async (req, res) => {
-	const todos = await Todo.find();
-	res.json(todos);
-	console.log(todos);
+  const todos = await Todo.find();
+  res.json(todos);
+  console.log("testing app.get(getting todos)" + todos);
 });
 
 //add a todo
 app.post("/todo/new", (req, res) => {
-	const todo = new Todo({
-		text: req.body.text,
-	});
-	todo.save();
-	res.json(todo);
-	console.log(todo);
+  const todo = new Todo({
+    text: req.body.text,
+    //complete: req.body.complete,
+  });
+  todo.save();
+  res.json(todo);
+  console.log("testing app.post(new todos)" + todo);
 });
 
 //delete an existing todo by id
 app.delete("/todo/delete/:id", async (req, res) => {
-	const result = await Todo.findByIdAndDelete(req.params.id); //this breaks because of below i think
-	res.json(result);
-	console.log(result);
+  const result = await Todo.findByIdAndDelete(req.params.id); //this breaks because of below i think
+  res.json(result);
+  console.log("testing app.delete(delete todo)" + result);
 });
 
 //set completed to an existing todo by id
-app.put("/todo/complete/:id", async (req, res) => {
-	const todo = await Todo.findById(req.params.id);
-	todo.complete = !todo.complete; //this breaks because of above i think
-	todo.save(); //this is part of the problem
-	// todo.update();
-	res.json(todo);
+app.get("/todo/complete/:id", async (req, res) => {
+  const todo = await Todo.findById(req.params.id);
+  //todo.complete = !todo.complete;
+  todo.complete = true;
+  todo.save();
+  //todo.update();
+  res.json(todo);
+  console.log("testing app.put(complete todo)" + todo);
 });
 
 app.listen(3001, () => console.log("Server started on port 3001"));
