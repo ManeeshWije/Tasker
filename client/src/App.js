@@ -22,9 +22,9 @@ function App() {
 
   //chanding todo to completed
   const completeTodo = async (id) => {
-    const data = await fetch(API + "/todo/complete/" + id, {
-      method: "GET",
-    }).then((res) => res.json());
+    const data = await fetch(API + "/todo/complete/" + id).then((res) =>
+      res.json()
+    );
     setTodos((todos) =>
       todos.map((todo) => {
         if (todo._id === data._id) {
@@ -76,7 +76,7 @@ function App() {
             <div
               className={"todo" + (todo.complete ? " is-complete" : "")}
               key={todo._id}
-              onClick={() => completeTodo(todo._id)}
+              //onClick={() => completeTodo(todo._id)}
             >
               <div className="checkbox"></div>
               <div className="text">{todo.text}</div>

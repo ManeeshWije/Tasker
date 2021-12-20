@@ -51,7 +51,7 @@ app.get("/todo/complete/:id", async (req, res) => {
   todo.save();
   //todo.update();
   res.json(todo);
-  console.log("testing app.put(complete todo)" + todo);
+  console.log("testing app.get(complete todo)" + todo);
 });
 
 app.listen(3001, () => console.log("Server started on port 3001"));
