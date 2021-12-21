@@ -20,7 +20,7 @@ mongoose
 const Todo = require("./models/Todo");
 
 //display current todos
-app.get("/", async (req, res) => {
+app.get("/todos", async (req, res) => {
   const todos = await Todo.find();
   res.json(todos);
   console.log("testing app.get(getting todos)" + todos);
@@ -54,4 +54,10 @@ app.get("/todo/complete/:id", async (req, res) => {
   console.log("testing app.get(complete todo)" + todo);
 });
 
-app.listen(PORT, () => console.log("Server started on port 3001"));
+app.use(express.static(path.join(__dirname, "/client")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "/client/build", "index.html"));
+});
+
+app.listen(PORT, () => console.log("Server started on port ${PORT}"));
