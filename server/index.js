@@ -46,8 +46,7 @@ app.delete("/todo/delete/:id", async (req, res) => {
 //set completed to an existing todo by id
 app.get("/todo/complete/:id", async (req, res) => {
   const todo = await Todo.findById(req.params.id);
-  //todo.complete = !todo.complete;
-  todo.complete = true;
+  todo.complete = !todo.complete;
   todo.save();
   //todo.update();
   res.json(todo);

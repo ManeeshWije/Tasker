@@ -76,11 +76,19 @@ function App() {
             <div
               className={"todo" + (todo.complete ? " is-complete" : "")}
               key={todo._id}
-              //onClick={() => completeTodo(todo._id)}
+              onClick={() => completeTodo(todo._id)}
             >
               <div className="checkbox"></div>
               <div className="text">{todo.text}</div>
-              <div className="delete" onClick={() => deleteTodo(todo._id)}>
+              <div
+                className="delete"
+                onClick={(e) => {
+                  if (!e) var e = window.event;
+                  e.cancelBubble = true;
+                  if (e.stopPropagation) e.stopPropagation();
+                  deleteTodo(todo._id);
+                }}
+              >
                 X
               </div>
             </div>
