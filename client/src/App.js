@@ -14,7 +14,7 @@ function App() {
 
   //getting all current todos
   const getTodos = () => {
-    fetch(API + "/todos")
+    fetch(API + "/")
       .then((res) => res.json())
       .then((data) => setTodos(data))
       .catch((err) => console.error(err));
