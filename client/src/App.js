@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 
 //base endpoint
-//const API = "https://crud-todo-list.herokuapp.com";
-const API = "http://localhost:3001";
+const API = "https://crud-todo-list.herokuapp.com";
+// const API = "http://localhost:3001";
 
 function App() {
 	const [todos, setTodos] = useState([]);

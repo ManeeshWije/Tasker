@@ -11,10 +11,10 @@ app.use(express.json());
 app.use(cors());
 
 //? MIDDLEWARE
-//app.use(express.json());
-//if (process.env.NODE_ENV === "production") {
-//app.use(express.static("client/build"));
-//}
+app.use(express.json());
+if (process.env.NODE_ENV === "production") {
+	app.use(express.static("client/build"));
+}
 
 //establishing mongodb connection
 mongoose
@@ -62,8 +62,8 @@ app.get("/todo/complete/:id", async (req, res) => {
 	console.log("testing app.get(complete todo)" + todo);
 });
 
-//app.get("*", (req, res) => {
-//res.sendFile(path.join(__dirname, "client", "build", "index.html"));
-//});
+app.get("*", (req, res) => {
+	res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+});
 
 app.listen(PORT, () => console.log("Server started on port " + PORT));
