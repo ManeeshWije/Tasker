@@ -4,9 +4,10 @@
   "description": "mern stack todo list",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "client": "cd client && npm start",
+    "server": "cd server && nodemon index.js",
     "start": "cd server node index.js",
-    "heroku-postbuild": "cd server && cd client && npm install && npm run build"
+    "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "repository": {
     "type": "git",
@@ -17,5 +18,10 @@
   "bugs": {
     "url": "https://github.com/ManeeshWije/crud-todo-list/issues"
   },
-  "homepage": "https://github.com/ManeeshWije/crud-todo-list#readme"
+  "homepage": "https://github.com/ManeeshWije/crud-todo-list#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.2",
+    "mongoose": "^6.1.2"
+  }
 }

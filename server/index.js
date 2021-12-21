@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const PORT = process.env.PORT || 3001;
+const path = require("path");
 
 const app = express();
 
@@ -54,10 +55,10 @@ app.get("/todo/complete/:id", async (req, res) => {
   console.log("testing app.get(complete todo)" + todo);
 });
 
-app.use(express.static(path.join(__dirname, "/client")));
+app.use(express.static(path.join(__dirname, "../client/build")));
 
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "/client/build", "index.html"));
+  res.sendFile(path.join(__dirname + "/../client/build/index.html"));
 });
 
 app.listen(PORT, () => console.log("Server started on port ${PORT}"));
