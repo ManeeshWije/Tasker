@@ -1,26 +1,28 @@
 {
-  "name": "server",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "start": "node index.js",
-    "client-install": "cd client && npm install",
-    "client-build": "cd client && npm run build",
-    "heroku-postbuild": "npm run client-install && npm run client-build"
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "cors": "^2.8.5",
-    "dotenv": "^10.0.0",
-    "express": "^4.17.2",
-    "mongoose": "^6.1.2"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.15"
-  },
-  "engines": {
-    "node": "v17.2.0"
-  }
+	"name": "server",
+	"version": "1.0.0",
+	"homepage": "http://localhost:3000",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"start": "node index.js",
+		"client-install": "cd client && npm install",
+		"client-build": "cd client && npm run build",
+		"heroku-postbuild": "npm run client-install && npm run client-build"
+	},
+	"author": "Maneesh Wijewardhana",
+	"license": "ISC",
+	"dependencies": {
+		"concurrently": "^6.5.1",
+		"cors": "^2.8.5",
+		"dotenv": "^10.0.0",
+		"express": "^4.17.2",
+		"mongoose": "^6.1.2"
+	},
+	"devDependencies": {
+		"nodemon": "^2.0.15"
+	},
+	"engines": {
+		"node": "v17.2.0"
+	}
 }
