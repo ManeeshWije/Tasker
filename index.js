@@ -14,7 +14,6 @@ app.use(cors());
 app.use(express.json());
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
-  // app.use('/static', express.static(path.join(__dirname, 'build')));
 }
 
 //establishing mongodb connection
@@ -29,7 +28,7 @@ mongoose
 const Todo = require("./models/Todo");
 
 //display current todos
-app.get("/", async (req, res) => {
+app.get("/todos", async (req, res) => {
   const todos = await Todo.find();
   res.json(todos);
   console.log("testing app.get(getting todos)" + todos);
