@@ -82,6 +82,7 @@ function App() {
               <div className="text">{todo.text}</div>
               <div
                 className="delete"
+                //stop from parent onclick from firing which causes app to crash
                 onClick={(e) => {
                   if (!e) var e = window.event;
                   e.cancelBubble = true;

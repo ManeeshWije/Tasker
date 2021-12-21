@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const PORT = process.env.PORT || 3001;
 
 const app = express();
 
@@ -53,4 +54,4 @@ app.get("/todo/complete/:id", async (req, res) => {
   console.log("testing app.get(complete todo)" + todo);
 });
 
-app.listen(3001, () => console.log("Server started on port 3001"));
+app.listen(PORT, () => console.log("Server started on port 3001"));
