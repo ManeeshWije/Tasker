@@ -1,27 +1,24 @@
 {
-  "name": "crud-todo-list",
+  "name": "server",
   "version": "1.0.0",
-  "description": "mern stack todo list",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "client": "cd client && npm start",
-    "server": "cd server && nodemon index.js",
-    "start": "node server/index.js",
-    "heroku-postbuild": "cd client && npm install && npm run build"
+    "start": "node index.js",
+    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ManeeshWije/crud-todo-list.git"
-  },
-  "author": "Maneesh Wijewardhana",
+  "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/ManeeshWije/crud-todo-list/issues"
-  },
-  "homepage": "https://github.com/ManeeshWije/crud-todo-list#readme",
   "dependencies": {
     "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
     "express": "^4.17.2",
     "mongoose": "^6.1.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  },
+  "engines": {
+    "node": "v17.2.0"
   }
 }

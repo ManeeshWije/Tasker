@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 //base endpoint
-const API = "https://crud-todo-list.herokuapp.com";
+const API = "http://localhost:3001";
 
 function App() {
   const [todos, setTodos] = useState([]);
@@ -14,7 +14,7 @@ function App() {
 
   //getting all current todos
   const getTodos = () => {
-    fetch(API + "/todos")
+    fetch(API + "/")
       .then((res) => res.json())
       .then((data) => setTodos(data))
       .catch((err) => console.error(err));
