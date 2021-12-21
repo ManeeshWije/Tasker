@@ -1,0 +1,21 @@
+{
+  "name": "crud-todo-list",
+  "version": "1.0.0",
+  "description": "mern stack todo list",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "cd server node index.js",
+    "heroku-postbuild": "cd server && cd client && npm install && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ManeeshWije/crud-todo-list.git"
+  },
+  "author": "Maneesh Wijewardhana",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ManeeshWije/crud-todo-list/issues"
+  },
+  "homepage": "https://github.com/ManeeshWije/crud-todo-list#readme"
+}
