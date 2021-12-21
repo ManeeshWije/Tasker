@@ -28,7 +28,7 @@ mongoose
 const Todo = require("./models/Todo");
 
 //display current todos
-app.get("/", async (req, res) => {
+app.get("/todos", async (req, res) => {
   const todos = await Todo.find();
   res.json(todos);
   console.log("testing app.get(getting todos)" + todos);
