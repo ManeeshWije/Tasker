@@ -10,6 +10,13 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+//? MIDDLEWARE
+app.use(express.json());
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+  // app.use('/static', express.static(path.join(__dirname, 'build')));
+}
+
 //establishing mongodb connection
 mongoose
   .connect(process.env.MONGODB_URI, {
@@ -22,7 +29,7 @@ mongoose
 const Todo = require("./models/Todo");
 
 //display current todos
-app.get("/", async (req, res) => {
+app.get("/todos", async (req, res) => {
   const todos = await Todo.find();
   res.json(todos);
   console.log("testing app.get(getting todos)" + todos);
@@ -55,13 +62,6 @@ app.get("/todo/complete/:id", async (req, res) => {
   res.json(todo);
   console.log("testing app.get(complete todo)" + todo);
 });
-
-//? MIDDLEWARE
-app.use(express.json());
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
-  // app.use('/static', express.static(path.join(__dirname, 'build')));
-}
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "client", "build", "index.html"));
