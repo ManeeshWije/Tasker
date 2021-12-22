@@ -1,1 +1,1 @@
-# Public Todo List Application build with the MERN Stack
+Todo List Application built with the MERN Stack
