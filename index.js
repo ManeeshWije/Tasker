@@ -10,11 +10,6 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-//? MIDDLEWARE
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
-}
-
 //establishing mongodb connection
 mongoose
   .connect(process.env.MONGODB_URI, {
@@ -59,10 +54,6 @@ app.get("/todo/complete/:id", async (req, res) => {
   //todo.update();
   res.json(todo);
   console.log("testing app.get(complete todo)" + todo);
-});
-
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
 });
 
 app.listen(PORT, () => console.log("Server started on port " + PORT));
