@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 //base endpoint
-const API = "https://maneeshs-tasker.fly.dev";
+const API = "https://maneeshs-tasker.onrender.com";
 // const API = "http://localhost:3001";
 
 function App() {
