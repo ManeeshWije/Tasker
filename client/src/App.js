@@ -15,7 +15,7 @@ function App() {
 
 	//getting all current todos
 	const getTodos = () => {
-		fetch(API + "/todos")
+		fetch(API + "/todos", { mode: "no-cors" })
 			.then((res) => res.json())
 			.then((data) => setTodos(data))
 			.catch((err) => console.error(err));
@@ -23,7 +23,7 @@ function App() {
 
 	//chanding todo to completed
 	const completeTodo = async (id) => {
-		const data = await fetch(API + "/todo/complete/" + id).then((res) => res.json());
+		const data = await fetch(API + "/todo/complete/" + id, { mode: "no-cors" }).then((res) => res.json());
 		setTodos((todos) =>
 			todos.map((todo) => {
 				if (todo._id === data._id) {
@@ -37,6 +37,7 @@ function App() {
 	//add a todo item
 	const addTodo = async () => {
 		const data = await fetch(API + "/todo/new", {
+      mode: "no-cors",
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
@@ -56,6 +57,7 @@ function App() {
 	//delete an existing todo
 	const deleteTodo = async (id) => {
 		const data = await fetch(API + "/todo/delete/" + id, {
+      mode: "no-cors",
 			method: "DELETE",
 		}).then((res) => res.json());
 		//filter out only ids that arent the same as what was passed in to simulate a delete
