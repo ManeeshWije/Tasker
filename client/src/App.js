@@ -79,7 +79,7 @@ function App() {
 								className="delete"
 								//stop from parent onclick from firing which causes app to crash
 								onClick={(e) => {
-									if (!e) var e = window.event;
+									if (!e) e = window.event;
 									e.cancelBubble = true;
 									if (e.stopPropagation) e.stopPropagation();
 									deleteTodo(todo._id);
