@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 //base endpoint
-const API = "https://maneeshs-todo-list.herokuapp.com";
+const API = "maneeshs-tasker.fly.dev";
 // const API = "http://localhost:3001";
 
 function App() {
