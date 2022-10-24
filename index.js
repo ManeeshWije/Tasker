@@ -8,15 +8,9 @@ require("dotenv").config();
 const app = express();
 
 const corsOpts = {
-  origin: '*',
-  methods: [
-    'GET',
-    'POST',
-    'DELETE',
-  ],
-  allowedHeaders: [
-    'Content-Type',
-  ],
+  origin: "*",
+  methods: ["GET", "POST", "DELETE"],
+  allowedHeaders: ["Content-Type"],
 };
 
 app.use(cors(corsOpts));
